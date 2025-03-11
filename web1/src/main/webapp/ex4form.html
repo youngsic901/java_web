@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>입력화면 디자인</title>
+</head>
+<body>
+<h2>* 회원 자료 입력 창 *</h2>
+<!-- GET : URL뒤에 '쿼리 스트링' 형태로 데이터를 전송. -->
+<!-- POST : HTTP 요청 본문(body)에 데이터를 포함하여 전송. URL에는 데이터가 노출되지 않음 -->
+<form action="input.jsp" method="post">
+	이름 : <input type="text" id="ir" name="irum" size="20" value="tom"><br>
+	비밀번호 : <input type="password" name="pwd"><br>
+	나이 : <input type="number" name="nai" min="10" max="50" value="25"><br>
+	성별 : <input type="radio" name="gender" value="m" checked="checked">남자
+	&nbsp;&nbsp;&nbsp;
+	<input type="radio" name="gender" value="f">여자
+	<br>
+	자신있는 언어 : 
+	<input type="checkbox" name="lan" value="c">c언어&nbsp;&nbsp;
+	<input type="checkbox" name="lan" value="java">자바&nbsp;&nbsp;
+	<input type="checkbox" name="lan" value="python">파이썬
+	<br>
+	거주 지역 : 
+	<select name="loc"> <!-- multiple="multiple" -->
+		<option value="서울" selected="selected">서울</option>
+		<option value="인천">인천</option>
+		<option value="원주">원주</option>
+		<option value="수원">수원</option>
+	</select>
+	<br>
+	건의 사항 : 
+	<textarea rows="5" cols="80" name="sug"></textarea>
+	<!-- 서버로 자료 전송시 화면상에 보이고 싶지 않은 경우 hidden -->
+	<input type="hidden" name="hello" value="비밀">
+	<br>
+	이미지 (파일 선택) : 
+	<input type="file" name="faceImage" />
+	<br><br>
+	<input type="submit" value="서버로 전송">
+</form>
+</body>
+</html>

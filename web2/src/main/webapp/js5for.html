@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>반복문</title>
+</head>
+<body>
+<h2>for test</h2>
+<script type="text/javascript">
+for(let a = 1; a <= 5; a++){
+	document.write("a는 " + a + "<br>");
+}
+// document.write("a는 " + a + "<br>"); // Uncaught ReferenceError: a is not defined
+
+for(var b = 1; b <= 10; b += 2){
+	document.write("b는 " + b + "<br>");
+}
+document.write("b는 " + b + "<br>");
+
+document.write("<br>다중 for --------------------------<br>");
+for(let c = 1; c <= 3; c++){
+	document.write("c는 " + c + "&nbsp;&nbsp;");
+	for(let d = 1; d <= 4; d++){
+		document.write("d는 " + d + "&nbsp;&nbsp;");
+	}
+	document.write("<br>");
+}
+
+document.write("<br>구구단 출력<br>");
+//let dan = +prompt("단 입력", "2");
+let dan = 2;
+if(isNaN(dan)){ // NaN : Not a Number
+	alert("숫자만 허용"); // 경고 대화 상자를 띄웁니다.
+} else if(dan >= 2 && dan <10){
+	document.write(`${dan}단<br>`);
+	for(let a = 1; a < 10; a++){		
+		document.write(`${dan}*${a}=${dan * a} `);
+	}
+	document.write("<br>");
+} else {
+	alert("2 ~ 9 사이의 정수만 허용");
+}
+
+document.write("<br>2 ~ 9 까지 구구단 출력 (짝수 단은 배경 색이 노랑)<br>");
+document.write("<table>");
+for(let dan = 2; dan < 10; dan++){
+	if(dan % 2 == 0){
+		document.write("<tr style='background-color:yellow'>");
+	} else {
+		document.write("<tr>");
+	}
+	for(let su = 2; su < 10; su++){
+		document.write(`<td>${dan}*${su}=${dan * su} </td>`);
+	}
+}
+document.write("</table>");
+</script>
+</body>
+</html>

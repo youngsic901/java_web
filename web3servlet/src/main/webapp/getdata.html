@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>get</title>
+<script src="./js/getdata.js"></script>
+</head>
+<body>
+<h2>GET 요청 처리</h2>
+<form action="GetDataServlet" method="get" name="frmGet">
+	<div>
+	이름 : <input type="text" name="name" size="10" value="test"><br>
+	나이 : <input type="text" name="age" size="3" value="32"><br>
+	</div>
+	<input type="button" id="btnOk" value="자료 전송1">
+</form>
+<br>
+<a href="GetDataServlet?name=tom&age=23">자료 전송2</a>
+</body>
+</html>
