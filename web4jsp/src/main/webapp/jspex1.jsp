@@ -70,5 +70,6 @@ JSP Element의 종류
         return m+n;
     }
 %><%-- 다음과 같이 <%! %> 내부에서 선언해야 클래스의 메소드로 취급받는다.--%>
+<%=addMethod(5,4)%>
 </body>
 </html>
