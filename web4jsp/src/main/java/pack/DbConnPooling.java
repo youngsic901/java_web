@@ -20,7 +20,7 @@ public class DbConnPooling {
             // JNDI : Java Naming and Directory Interface
             // 서비스가 제공하는 데이터 밎 객체 참조(lookup)하기 위한 API
             Context context = new InitialContext();
-            ds = (DataSource)context.lookup("java:comp/env/jdbc_maria");
+            ds = (DataSource)context.lookup("java:comp/env/jdbc_maria");  // META-INF의 context.xml context태그의 name을 참조한다.
         } catch (Exception e) {
             System.out.println("DbConnPooling err : " + e);
         }
@@ -63,7 +63,7 @@ public class DbConnPooling {
             conn = ds.getConnection();
 
             // 신상 code 구하기
-            String sql = "select max(code) as max from sangdata";;
+            String sql = "select max(code) as max from sangdata";
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             int maxCode = 0;
@@ -119,5 +119,43 @@ public class DbConnPooling {
         }
 
         return dto;
+    }
+
+    public boolean updateData(SangpumFormBean bean){
+        boolean b = false;
+
+        String sql = "update sangdata set sang = ? , su = ? , dan = ? where code = ?";
+
+        try(
+            Connection conn = ds.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+        ){
+            pstmt.setString(1, bean.getSang());
+            pstmt.setString(2, bean.getSu());
+            pstmt.setString(3, bean.getDan());
+            pstmt.setString(4, bean.getCode());
+            if(pstmt.executeUpdate() > 0) b = true;
+        } catch (Exception e) {
+            System.out.println("updateData err : " + e.getMessage());
+        }
+
+        return b;
+    }
+
+    public boolean deleteData(String code){
+        boolean b = false;
+        String sql = "delete from sangdata where code = ?";
+
+        try (
+            Connection conn = ds.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+        ){
+            pstmt.setString(1, code);
+            if(pstmt.executeUpdate() > 0) b = true;
+        } catch (Exception e) {
+            System.out.println("deleteData err : " + e);
+        }
+
+        return b;
     }
 }
