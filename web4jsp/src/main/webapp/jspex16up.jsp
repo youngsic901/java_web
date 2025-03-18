@@ -22,11 +22,14 @@
             location.href = "jspex16dbcp.jsp";
         </script>
 <%
+        return;
     }
 %>
 * 상품 수정 *<br>
 <form action="jspex16upok.jsp" method="post">
-    코드 : <br>
+    코드 : <%=dto.getCode()%>
+    <input type="hidden" name="code" value="<%=dto.getCode()%>"> <%-- 코드는 일반적으로 수정 하지 않으나 해당 코드의 자료를 조회하므로 input 으로 넘겨야 한다.--%>
+    <br>
     <label for="sang">품명 :</label>
     <input type="text" name="sang" id="sang" value="<%=dto.getSang()%>"><br>
     <label for="su">수량 :</label>
