@@ -1,19 +1,23 @@
 package pack;
 
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class Jspex14DbConnect {
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;
+    private Properties properties = new Properties();
 
     public Jspex14DbConnect() {
         try{
-            Class.forName("org.mariadb.jdbc.Driver");
+            properties.load(new FileInputStream("c:/work/intellij_web/java_web/web4jsp/src/main/resources/DBinfo.properties"));
+            Class.forName(properties.getProperty("driver"));
         } catch (Exception e) {
             System.out.println("Jspex14DbConnect err : " + e);
         }
@@ -22,7 +26,7 @@ public class Jspex14DbConnect {
     public ArrayList<JikwonDto> getJikwon(String busername) {
         ArrayList<JikwonDto> list = new ArrayList<>();
         try{
-            conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/test", "root", "123");
+            conn = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("password"));
             String sql = "SELECT jikwonno, jikwonname, jikwonjik, jikwongen, jikwonpay FROM jikwon JOIN buser ON buserno=busernum WHERE busername=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, busername);
