@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./js/jspex17write.js"></script>
+</head>
+<body>
+<h2>* 방명록 작성 *</h2>
+<form action="jspex17write.jsp" method="post" id="frm">
+  <table border="1">
+    <tr>
+      <td><label for="writer">작성자</label></td>
+      <td><input type="text" name="writer" id="writer"></td>
+    </tr>
+    <tr>
+      <td><label for="title">제목</label></td>
+      <td><input type="text" name="title" id="title"></td>
+    </tr>
+    <tr>
+      <td><label for="contents">내용</label></td>
+      <td><textarea name="contents" id="contents"></textarea></td>
+    </tr>
+  </table>
+  <input type="button" value="상품추가" id="btnWrite">
+  <input type="reset" value="입력취소">
+  <input type="button" value="상품보기" id="btnList">
+
+</form>
+</body>
+</html>
